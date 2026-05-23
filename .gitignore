@@ -1,0 +1,42 @@
+# Виртуальное окружение
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Логи и отчеты
+*.log
+*.xml
+*.html
+reports/
+screenshots/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Файлы драйверов (они не нужны в репозитории)
+chromedriver.exe
+geckodriver.exe
+msedgedriver.exe
+
+# Файлы конфигурации с секретами
+.env
+secrets.py
+config.py
+
+# Временные файлы
+*.tmp
+*.temp
