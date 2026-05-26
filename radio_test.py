@@ -68,6 +68,20 @@ def click_radio_button(driver: webdriver.Chrome, radio_button: WebElement, value
     logging.info(f"✓ Клик по радиокнопке '{value}' выполнен")
 
 
+def get_selected_status_text(driver: webdriver.Chrome) -> Optional[str]:
+    """
+    Получает текст сообщения. Возвращает None, если сообщения нет.
+    Без Exception — проверяем существование элемента.
+    """
+    elements = driver.find_elements(By.CLASS_NAME, "mt-3")
+    
+    if not elements:
+        return None
+    
+    text = elements[0].text
+    return text if text and "You have selected" in text else None
+
+
 def test_radio_button(driver: webdriver.Chrome, radio_value: str) -> None:
     """
     Тестирование одной радиокнопки.
@@ -106,20 +120,6 @@ def test_radio_button(driver: webdriver.Chrome, radio_value: str) -> None:
         f"Ожидалось: '{expected_text}', получено: '{success_message}'"
     
     logging.info(f"✅ Текст подтверждения корректен: '{success_message}'")
-
-
-def get_selected_status_text(driver: webdriver.Chrome) -> Optional[str]:
-    """
-    Получает текст сообщения. Возвращает None, если сообщения нет.
-    Без Exception — проверяем существование элемента.
-    """
-    elements = driver.find_elements(By.CLASS_NAME, "mt-3")
-    
-    if not elements:
-        return None
-    
-    text = elements[0].text
-    return text if text and "You have selected" in text else None
 
 
 def main() -> None:
